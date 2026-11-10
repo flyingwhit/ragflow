@@ -2546,7 +2546,7 @@ func (s *AgentService) buildRunFunc(canvasID string, versionRow *entity.UserCanv
 		attachment, _ := assistantOutput["attachment"].(map[string]any)
 		// Release any deferred Agent node that was not consumed because the
 		// downstream Message was skipped by an exception/branch path.
-		runtime.CompleteAllDeferredNodes(ctx2)
+		runtime.CompleteAllDeferredNodes(ctx2, err)
 		runtime.FinalizeAgentMessage(ctx2)
 		messageEventsEmitted := runtime.AgentMessageEventsEmittedRun(ctx2)
 		messageEventsSuppressed := runtime.AgentMessageEventsSuppressedRun(ctx2)
